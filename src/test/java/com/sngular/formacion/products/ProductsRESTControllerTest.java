@@ -33,8 +33,13 @@ public class ProductsRESTControllerTest {
 	@Test
 	public void whenNewProductIsSent_ItWillBeCreatedWithUniqueId() throws Exception {
 		
+		Product product = new Product();
+		
+		product.setId("1234");
+		product.setName("Play Station 4");
+		
 		when(repository.save(any(Product.class)))
-		.thenReturn(new Product().setId("1234").setName("Play Station 4"));
+		.thenReturn(product);
 		
 		mvc.perform(	
 				post("/v1/products")
